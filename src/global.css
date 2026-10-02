@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+    font-family: "Open Sans", sans-serif;
+
+    color: #ffffff;
+    /*background-color: #0C0C0C;*/
+    background-color: rgba(16, 17, 21);
+    user-select: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*
+html,
+body,
+#root {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    user-select: none;
+}
+*/
+
+img {
+    pointer-events: none;
+}
+
+button {
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    font-family: inherit;
+  }

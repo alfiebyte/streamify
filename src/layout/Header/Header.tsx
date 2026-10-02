@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
+
+import {
+    nav
+} from "@src/assets";
+
+import "@src/layout/Header/Header.css";
 
 interface NavItemProps {
     text: string;
@@ -11,10 +17,13 @@ function NavItem({ text, logo, href }: NavItemProps) {
     const { pathname } = useLocation();
     const isActive = pathname === href;
     return (
-        <div className={`item ${isActive ? "active" : ""}`}>
-            {" "}
-            <img src={logo} /> <span>{text}</span> <div className="backdrop" />
-        </div>
+        <Link to={href}>
+            <div className={`item ${isActive ? "active" : ""}`}>
+                {" "}
+                <img src={logo} /> <span>{text}</span>{" "}
+                <div className="backdrop" />
+            </div>
+        </Link>
     );
 }
 
@@ -40,17 +49,23 @@ function LayoutHeader({}: LayoutProps) {
         <div className="header">
             <div className="fade" style={{ opacity: scrolled ? 1 : 0 }} />
             <div className="left">
-                <img className="logo" src={ExampleLogo} />
+                <Link to="/" className="logo">
+                    Streamify
+                </Link>
                 <div className="navigation">
-                    <NavItem text="Home" logo={HomeLogo} href="/" />
-                    <NavItem text="Movies" logo={MovieLogo} href="/movies" />
-                    <NavItem text="Series" logo={TVLogo} href="/series" />
+                    <NavItem text="Home" logo={nav.home} href="/" />
+                    <NavItem text="Movies" logo={nav.movie} href="/movies" />
+                    <NavItem
+                        text="Series"
+                        logo={nav.tvSeries}
+                        href="/series"
+                    />
                 </div>
             </div>
             <div className="right">
                 <div className="profile">
                     <span className="name">OnlyTwentyCharacters</span>
-                    <img className="pfp" src={ProfilePicturePlaceHolder} />
+                    <img className="pfp" src={nav.defaultPfp} />
                 </div>
             </div>
         </div>

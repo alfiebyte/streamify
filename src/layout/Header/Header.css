@@ -36,9 +36,11 @@
 
 .header .left .logo {
     margin-left: 50px;
-    height: 50%;
-    width: auto;
-    filter: invert(56%) sepia(68%) saturate(1280%) hue-rotate(295deg) brightness(108%) contrast(101%);
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #fefefe;
+    user-select: none;
 }
 
 .header .navigation {

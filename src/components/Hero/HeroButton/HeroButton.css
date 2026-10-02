@@ -1,0 +1,40 @@
+.button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(16, 17, 21);
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    outline: solid 1px white;
+}
+
+.button .icon {
+    height: 50%;
+    width: 50%;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
+        brightness(102%) contrast(102%);
+}
+
+.button .label {
+    position: absolute;
+    top: -35px;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 5px;
+    background-color: rgb(16, 17, 21);
+    padding: 6px 10px;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    transition: opacity 200ms ease-in-out;
+    border: 1px solid rgb(50, 50, 50);
+    overflow: visible;
+    z-index: 5;
+}
+
+.hero .button:hover .label {
+    opacity: 1;
+}
