@@ -1,51 +1,15 @@
 import React from "react";
 
-import HeroButton from "./HeroButton/HeroButton";
+import CircleButton from "@src/components/CircleButton/CircleButton";
+import CardRating from "@src/components/CardRating/CardRating";
 
-import "@src/components/Hero/Hero.css"
+import "@src/components/CardHero/CardHero.css"
 
-import { hero } from "@src/assets";
+import { card } from "@src/assets";
 
-interface HeroRatingProps {
-    value: number;
-}
+interface CardHeroProps {}
 
-function HeroRating({ value }: HeroRatingProps) {
-    const max = 10;
-    const stars = 5;
-    const scaled = Math.min(Math.max((value / max) * stars, 0), stars);
-    const rounded = Math.round(scaled * 2) / 2;
-
-    return (
-        <div
-            className="rating"
-            role="img"
-        >
-            {Array.from({ length: stars }, (_, i) => {
-                const src =
-                    rounded >= i + 1
-                        ? hero.starFilled
-                        : rounded >= i + 0.5
-                          ? hero.starHalf
-                          : hero.star;
-
-                return (
-                    <img
-                        key={i}
-                        src={src}
-                        alt=""
-                        className="star"
-                        loading="lazy"
-                    />
-                );
-            })}
-        </div>
-    );
-}
-
-interface HeroProps {}
-
-function Hero({}: HeroProps) {
+function CardHero({}: CardHeroProps) {
 
     const extraItems = ["2025", "2h 5m", "Action", "Science Fiction", "Adventure"];
 
@@ -72,7 +36,9 @@ function Hero({}: HeroProps) {
                                     </span>
                                 ))}
                             </div>
-                            <HeroRating value={5.5}/>
+                            <div className="rating">
+                                <CardRating value={1} style={{height: 18}}/>
+                            </div>
                             <div className="description">
                                 After finding themselves ensnared in a death
                                 trap, seven disillusioned castoffs must embark
@@ -80,8 +46,8 @@ function Hero({}: HeroProps) {
                                 confront the darkest corners of their pasts.
                             </div>
                             <div className="buttons">
-                                <HeroButton Action="Play" Icon={hero.play} OnClick={() => {}}/>
-                                <HeroButton Action="Watch Later" Icon={hero.watchLater} OnClick={() => {}} />
+                                <CircleButton Action="Play" Icon={card.play} OnClick={() => {}}/>
+                                <CircleButton Action="Watch Later" Icon={card.watchLater} OnClick={() => {}} />
                             </div>
                         </div>
                         <div className="more"></div>
@@ -94,4 +60,4 @@ function Hero({}: HeroProps) {
     );
 }
 
-export default Hero;
+export default CardHero;

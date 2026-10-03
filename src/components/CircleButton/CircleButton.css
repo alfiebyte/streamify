@@ -35,6 +35,6 @@
     z-index: 5;
 }
 
-.hero .button:hover .label {
+.button:hover .label {
     opacity: 1;
 }

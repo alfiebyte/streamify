@@ -1,0 +1,7 @@
+.homeEntry {}
+
+.homeEntry .sliders {
+    position: relative;
+    z-index: 20;
+    margin-top: 40px;
+}

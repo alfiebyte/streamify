@@ -1,0 +1,134 @@
+.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: clamp(420px, 70vh, 800px);
+    padding-top: 100px;
+    box-sizing: border-box;
+}
+
+.hero .backdrop-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero .fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgb(16, 17, 21) 5%,
+        rgba(0, 0, 0, 0) 80%
+    );
+    z-index: 2;
+}
+
+.hero .fadeRight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgb(16, 17, 21) 5%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 2;
+}
+
+.hero .information {
+    position: relative;
+    width: 100%;
+    padding-bottom: 20px;
+    z-index: 10;
+}
+
+.hero .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(320px, 40%, 640px);
+    padding: 0 25px;
+    box-sizing: border-box;
+}
+
+.hero .logo {
+    width: 75%;
+    height: auto;
+}
+
+.hero .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    height: clamp(35px, 3vw, 50px);
+    margin: 20px 0 10px;
+}
+
+.hero .rating {
+    display: flex;
+    align-items: center;
+    margin: 4px;
+}
+
+.hero .star {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
+        brightness(102%) contrast(102%);
+}
+
+.hero .extra {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    color: #fff;
+}
+
+.hero .text {
+    display: inline-flex;
+    align-items: center;
+    font-size: clamp(15px, 1vw, 18px);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.hero .text + .text::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    margin: 0 12px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.hero .description {
+    margin-top: 12px;
+    font-size: clamp(14px, 0.9vw, 16px);
+    font-weight: 300;
+    line-height: 1.5;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 900px) {
+    .hero .left {
+        width: 100%;
+    }
+}
