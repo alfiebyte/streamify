@@ -1,0 +1,14 @@
+name: Setup
+description: install node, dependencies and vercel globally
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: npm
+    - run: npm ci
+      shell: bash
+    - run: npm install -g vercel@latest
+      shell: bash

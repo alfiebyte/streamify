@@ -20,8 +20,9 @@
         "noFallthroughCasesInSwitch": true,
 
         "paths": {
-            "@/*": ["./*"]
+            "@/*": ["./*"],
+            "@src/*": ["./src/*"]
         }
     },
-    "include": ["vite.config.ts", "api", "tests"]
+    "include": ["vite.config.ts", "api", "tests", "src/pages/Home/HomePage.test.ts"]
 }

@@ -11,7 +11,6 @@ const tmdbRequest = axios.create({
 
 tmdbRequest.interceptors.request.use((config) => {
     const tmdbToken = process.env.TMDB_ACCESS_TOKEN
-    console.log(process.env)
     if (!tmdbToken) throw new Error(`TMDB_ACCESS_TOKEN not set`);
 
     config.headers.set("Authorization", `Bearer ${tmdbToken}`);
