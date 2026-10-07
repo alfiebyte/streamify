@@ -6,7 +6,7 @@ export const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p";
 const tmdbRequest = axios.create({
     baseURL: TMDB_BASE,
     headers: { accept: "application/json" },
-    timeout: 10000,
+    timeout: 5000,
 });
 
 tmdbRequest.interceptors.request.use((config) => {
