@@ -3,21 +3,25 @@ import axios from "axios";
 export const TMDB_BASE = "https://api.themoviedb.org/3";
 export const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p";
 
-const httpRequest = axios.create({
+const tmdbRequest = axios.create({
     baseURL: TMDB_BASE,
     headers: { accept: "application/json" },
     timeout: 10000,
 });
 
-httpRequest.interceptors.request.use((config) => {
+tmdbRequest.interceptors.request.use((config) => {
     const tmdbToken = process.env.TMDB_ACCESS_TOKEN
+    console.log(process.env)
     if (!tmdbToken) throw new Error(`TMDB_ACCESS_TOKEN not set`);
 
     config.headers.set("Authorization", `Bearer ${tmdbToken}`);
     return config;
 });
 
-httpRequest.interceptors.response.use((response) => response, (error) => error)
+tmdbRequest.interceptors.response.use(
+  (response) => response,
+  (error) => Promise.reject(error)
+);
 
 // https://developer.themoviedb.org/reference/movie-now-playing-list
 interface MovieListsParams {
@@ -53,7 +57,7 @@ export interface MovieListsResponse {
 }
 
 export function movieListNowPlaying({ language = "en-US", page = 1, region = "" }: MovieListsParams) {
-    return httpRequest.request<MovieListsResponse>({
+    return tmdbRequest.request<MovieListsResponse>({
         url: "/movie/now_playing",
         method: "GET",
         params: {
@@ -66,7 +70,7 @@ export function movieListNowPlaying({ language = "en-US", page = 1, region = "" 
 
 
 export function movieListPopular({ language = "en-US", page = 1, region = "" }: MovieListsParams) {
-    return httpRequest.request<MovieListsResponse>({
+    return tmdbRequest.request<MovieListsResponse>({
         url: "/movie/popular",
         method: "GET",
         params: {
@@ -78,7 +82,7 @@ export function movieListPopular({ language = "en-US", page = 1, region = "" }: 
 }
 
 export function movieListTopRated({ language = "en-US", page = 1, region = "" }: MovieListsParams) {
-    return httpRequest.request<MovieListsResponse>({
+    return tmdbRequest.request<MovieListsResponse>({
         url: "/movie/top_rated",
         method: "GET",
         params: {
@@ -90,7 +94,7 @@ export function movieListTopRated({ language = "en-US", page = 1, region = "" }:
 }
 
 export function movieListUpcoming({ language = "en-US", page = 1, region = "" }: MovieListsParams) {
-    return httpRequest.request<MovieListsResponse>({
+    return tmdbRequest.request<MovieListsResponse>({
         url: "/movie/upcoming",
         method: "GET",
         params: {
@@ -98,5 +102,17 @@ export function movieListUpcoming({ language = "en-US", page = 1, region = "" }:
             page: page,
             region: region
         },
+    })
+}
+
+interface AuthenticationResponse {
+    success: boolean;
+    message?: string;
+}
+
+export function authentication() {
+    return tmdbRequest.request<AuthenticationResponse>({
+        url: "/authentication",
+        method: "GET"
     })
 }
