@@ -1,11 +1,11 @@
 import React from "react";
 
-import CircleButton from "@src/components/CircleButton/CircleButton";
-import CardRating from "@src/components/CardRating/CardRating";
+import CircleButton from "src/components/CircleButton/CircleButton";
+import CardRating from "src/components/CardRating/CardRating";
 
-import "@src/components/CardHero/CardHero.css"
+import "src/components/CardHero/CardHero.css"
 
-import { card } from "@src/assets";
+import { card } from "src/assets";
 
 interface CardHeroProps {}
 

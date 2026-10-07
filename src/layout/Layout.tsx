@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router";
 
 
-import "@src/layout/Layout.css";
+import "src/layout/Layout.css";
 
-import LayoutHeader from "@src/layout/Header/Header";
+import LayoutHeader from "src/layout/Header/Header";
 
 interface LayoutProps {}
 

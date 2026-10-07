@@ -3,9 +3,9 @@ import { Link, useLocation } from "react-router";
 
 import {
     nav
-} from "@src/assets";
+} from "src/assets";
 
-import "@src/layout/Header/Header.css";
+import "src/layout/Header/Header.css";
 
 interface NavItemProps {
     text: string;

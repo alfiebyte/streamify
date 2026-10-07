@@ -23,8 +23,10 @@
         "noFallthroughCasesInSwitch": true,
 
         "paths": {
-            "@src/*": ["./src/*"]
+            "src/*": ["./src/*"],
+            "tests/*": ["./tests/*"],
+            "types/*": ["./types/*"],
         }
     },
-    "include": ["src", "tests/setupTests.ts"]
+    "include": ["src", "tests", "types"]
 }

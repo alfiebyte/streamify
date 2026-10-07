@@ -1,5 +1,9 @@
 import axios from "axios";
 
+import type { MovieListsResponse, MovieListsParams, AuthenticationResponse, TmdbImagesResult } from "types/Tmdb"
+
+import type { DiscoverMovieParams, DiscoverTvParams, MovieDiscover, SeriesDiscover } from "types/TmdbDiscover";
+
 export const TMDB_BASE = "https://api.themoviedb.org/3";
 export const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p";
 
@@ -23,37 +27,6 @@ tmdbRequest.interceptors.response.use(
 );
 
 // https://developer.themoviedb.org/reference/movie-now-playing-list
-interface MovieListsParams {
-    language?: string;
-    page?: number;
-    region?: string; // ISO-3166-1 code??
-}
-
-export interface MovieListsResponse {
-  dates: {
-    maximum: string
-    minimum: string
-  }
-  page: number
-  results: Array<{
-    adult: boolean
-    backdrop_path: string
-    genre_ids: Array<number>
-    id: number
-    original_language: string
-    original_title: string
-    overview: string
-    popularity: number
-    poster_path: string
-    release_date: string
-    title: string
-    video: boolean
-    vote_average: number
-    vote_count: number
-  }>
-  total_pages: number
-  total_results: number
-}
 
 export function movieListNowPlaying({ language = "en-US", page = 1, region = "" }: MovieListsParams) {
     return tmdbRequest.request<MovieListsResponse>({
@@ -104,9 +77,40 @@ export function movieListUpcoming({ language = "en-US", page = 1, region = "" }:
     })
 }
 
-interface AuthenticationResponse {
-    success: boolean;
-    message?: string;
+export function movieImages(movieId: number, imageLanguage: string = "en-US") {
+    return tmdbRequest.request<TmdbImagesResult>({
+        url: `/movie/${movieId}/images`,
+        method: "GET",
+        params: {
+            include_image_language: imageLanguage
+        }
+    })
+}
+
+export function seriesImages(seriesId: number, imageLanguage: string = "en-US") {
+    return tmdbRequest.request<TmdbImagesResult>({
+        url: `/tv/${seriesId}/images`,
+        method: "GET",
+        params: {
+            include_image_language: imageLanguage
+        }
+    })
+}
+
+export function movieDiscover(params: DiscoverMovieParams) {
+    return tmdbRequest.request<MovieDiscover>({
+        url: "/discover/movie",
+        method: "GET",
+        params: params
+    })
+}
+
+export function seriesDiscover(params: DiscoverTvParams) {
+    return tmdbRequest.request<SeriesDiscover>({
+        url: "/discover/tv",
+        method: "GET",
+        params: params
+    })
 }
 
 export function authentication() {

@@ -1,9 +1,11 @@
-import CircleButton from "@src/components/CircleButton/CircleButton";
-import CardRating from "@src/components/CardRating/CardRating";
+import CircleButton from "src/components/CircleButton/CircleButton";
+import CardRating from "src/components/CardRating/CardRating";
 
-import { card } from "@src/assets";
+import type { CardInterface } from "types/Card"
 
-import "@src/components/CardsRowSlider/Card/Card.scss";
+import { card } from "src/assets";
+
+import "src/components/CardsRowSlider/Card/Card.scss";
 
 function formatRunTime(runTime: number) {
     if (runTime <= 0) return "N/A";
@@ -16,15 +18,7 @@ function formatRunTime(runTime: number) {
     return `${minutes}m`;
 }
 
-export interface CardProps {
-    title: string;
-    thumbnail: string;
-    rating: number;
-    year: number;
-    runTime: number;
-    description: string;
-    lastRunTime?: number;
-}
+export type CardProps = CardInterface
 
 function Card({
     title,

@@ -1,4 +1,4 @@
-import { card } from "@src/assets";
+import { card } from "src/assets";
 import type React from "react";
 
 interface CardRatingProps {
@@ -6,7 +6,7 @@ interface CardRatingProps {
     style?: React.CSSProperties;
 }
 
-import "@src/components/CardRating/CardRating.css"
+import "src/components/CardRating/CardRating.css"
 
 function CardRating({ value, style }: CardRatingProps) {
     const max = 10;

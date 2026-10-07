@@ -1,6 +1,10 @@
+// api/discover/[kind].ts
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { movieListNowPlaying } from "../_lib/tmdb";
+import { movieDiscover, seriesDiscover } from "../_lib/tmdb";
 import tmdbToCard from "../_lib/mapToCard";
+import type {
+    DiscoverTvParams,
+} from "types/TmdbDiscover";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method !== "GET") {
@@ -10,17 +14,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     try {
-        const raw = Array.isArray(req.query.page) ? req.query.page[0] : req.query.page;
-        const pageNumber = parseInt(raw)
-        const response = await movieListNowPlaying({ page: pageNumber });
+        const response = await seriesDiscover(req.query as DiscoverTvParams)
+
         res.setHeader(
             "Cache-Control",
             "s-maxage=300, stale-while-revalidate=600",
         );
+
         const cardPromises = response.data.results.map((result) =>
-            tmdbToCard("movie", result),
+            tmdbToCard("series", result),
         );
         const results = await Promise.all(cardPromises);
+
         return res.status(200).json({
             success: true,
             items: results,
@@ -29,11 +34,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         });
     } catch (error) {
         console.error(error);
-        return res
-            .status(500)
-            .json({
-                success: false,
-                message: "Failed to fetch now playing movies",
-            });
+        return res.status(500).json({
+            success: false,
+            message: `Failed to fetch discover for movie`,
+        });
     }
 }

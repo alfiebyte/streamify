@@ -1,4 +1,4 @@
-import "@src/components/CircleButton/CircleButton.css";
+import "src/components/CircleButton/CircleButton.css";
 import type React from "react";
 
 interface CircleButtonProps {
