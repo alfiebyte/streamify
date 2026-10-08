@@ -54,9 +54,9 @@ function Profile() {
         return (
             <div className="profile">
                 <CircleButton
-                    Action="Sign in with Google"
+                    Action="Sign In with Google"
                     OnClick={signInWithGoogle}
-                    Style={{ height: 42 }}
+                    Style={{ height: 42, width: 200, borderRadius: 10, background: "rgb(63, 127, 236)" }}
                 />
             </div>
         );
@@ -66,7 +66,7 @@ function Profile() {
     const avatar = user.user_metadata.avatar_url ?? nav.defaultPfp;
 
     return (
-        <div className="profile">
+        <div className="profile" title="Sign out" onClick={signOut}>
             <span className="name">{name.slice(0, 20)}</span>
             <img
                 className="pfp"
@@ -74,11 +74,6 @@ function Profile() {
                 onError={(element) => {
                     element.currentTarget.src = nav.defaultPfp
                 }}
-            />
-            <CircleButton
-                Action="Log out"
-                OnClick={signOut}
-                Style={{ height: 42, marginLeft: 10 }}
             />
         </div>
     );
@@ -96,7 +91,7 @@ function LayoutHeader({}: LayoutProps) {
                 <Link to="/" className="logo">
                     Streamify
                 </Link>
-                <div className="navigation">
+                {/*<div className="navigation">
                     <NavItem text="Home" logo={nav.home} href="/" />
                     <NavItem text="Movies" logo={nav.movie} href="/movies" />
                     <NavItem
@@ -104,7 +99,7 @@ function LayoutHeader({}: LayoutProps) {
                         logo={nav.tvSeries}
                         href="/series"
                     />
-                </div>
+                </div>*/}
             </div>
             <div className="right">
                 <Profile />

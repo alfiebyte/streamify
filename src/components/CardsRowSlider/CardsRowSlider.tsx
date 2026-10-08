@@ -16,10 +16,11 @@ export interface PageResult {
 
 interface CardsRowSliderProps {
     Title: string;
-    fetchPage: (page: number) => Promise<AxiosResponse<PageResult>>;
+    fetchPage: (page: number) => Promise<PageResult>;
+    refreshKey?: number;
 }
 
-function CardsRowSlider({ Title, fetchPage }: CardsRowSliderProps) {
+function CardsRowSlider({ Title, fetchPage, refreshKey }: CardsRowSliderProps) {
     const [cards, setCards] = useState<CardProps[]>([]);
     const [hasMore, setHasMore] = useState(true);
     const [sliderPosition, setSliderPosition] = useState<number>(0);
@@ -34,9 +35,9 @@ function CardsRowSlider({ Title, fetchPage }: CardsRowSliderProps) {
         loadingRef.current = true;
         try {
             const response = await fetchPage(pageRef.current + 1);
-            pageRef.current = response.data.page;
-            setCards((prev) => [...prev, ...response.data.items]);
-            setHasMore(response.data.page < response.data.totalPages);
+            pageRef.current = response.page;
+            setCards((prev) => [...prev, ...response.items]);
+            setHasMore(response.page < response.totalPages);
         } catch (err) {
             console.error(err);
         } finally {
@@ -44,9 +45,29 @@ function CardsRowSlider({ Title, fetchPage }: CardsRowSliderProps) {
         }
     }, [fetchPage]);
 
+    const rowRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         loadNextPage();
-    }, []);
+    }, [loadNextPage]);
+
+    useEffect(() => {
+        if (!refreshKey) return;
+
+        let cancelled = false;
+        fetchPage(1)
+            .then((response) => {
+                if (cancelled) return;
+                pageRef.current = response.page;
+                setCards(response.items);
+                setHasMore(response.page < response.totalPages);
+                setSliderPosition(0);
+            })
+            .catch(console.error);
+        return () => {
+            cancelled = true;
+        };
+    }, [refreshKey]);
 
     function getMaxPosition() {
         const element = cardsRef.current;
@@ -79,7 +100,7 @@ function CardsRowSlider({ Title, fetchPage }: CardsRowSliderProps) {
     }
 
     return (
-        <div className="row">
+        <div className="row" ref={rowRef}>
             <div className="headerTitle">{Title}</div>
             <div className="slider">
                 <div

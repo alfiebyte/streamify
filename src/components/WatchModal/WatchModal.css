@@ -1,0 +1,74 @@
+.watch-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.watch-modal .container {
+    position: relative;
+    width: min(520px, calc(100vw - 32px));
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 28px;
+    border-radius: 12px;
+    background-color: rgb(16, 17, 21);
+    border: 1px solid rgb(50, 50, 50);
+}
+
+.watch-modal .close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.watch-modal .title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding-right: 30px;
+}
+
+.watch-modal .subtitle {
+    margin-bottom: 18px;
+    color: rgb(160, 160, 160);
+}
+
+.watch-modal .message {
+    color: rgb(160, 160, 160);
+}
+
+.watch-modal .section {
+    margin-top: 16px;
+}
+
+.watch-modal .section .label {
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.watch-modal .providers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.watch-modal .providers img {
+    display: block;
+    height: 52px;
+    width: 52px;
+    border-radius: 10px;
+    transition: transform 150ms;
+}
+
+.watch-modal .providers a:hover img {
+    transform: scale(1.08);
+}
