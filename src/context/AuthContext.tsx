@@ -39,12 +39,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 redirectTo: window.location.origin + window.location.pathname,
             },
         });
-        if (error) console.error("Google sign-in failed:", error.message);
+        if (error) {
+            console.error("Sign-in failed:", error.message);
+        }
     };
 
     const signOut = async () => {
         const { error } = await supabase.auth.signOut();
-        if (error) console.error("Sign-out failed:", error.message);
+        if (error) {
+            console.error("Sign-out failed:", error.message);
+        }
     };
 
     return (
