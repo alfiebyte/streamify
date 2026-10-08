@@ -1,9 +1,9 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { watchProviders, TMDB_IMAGE_BASE } from "../_lib/tmdb";
+import { watchProviders, TMDB_IMAGE_BASE } from "./_lib/tmdb.js";
 import type {
     TmdbWatchProvider,
     WatchProviderLogo,
-} from "types/Tmdb";
+} from "../types/Tmdb.js";
 
 function toLogos(providers: TmdbWatchProvider[] = []): WatchProviderLogo[] {
     return [...providers]

@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { movieListNowPlaying } from "./_lib/tmdb";
-import tmdbToCard from "./_lib/mapToCard";
+import { movieListNowPlaying } from "./_lib/tmdb.js";
+import tmdbToCard from "./_lib/mapToCard.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method !== "GET") {

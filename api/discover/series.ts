@@ -1,10 +1,10 @@
 // api/discover/[kind].ts
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { movieDiscover, seriesDiscover } from "../_lib/tmdb";
-import tmdbToCard from "../_lib/mapToCard";
+import { movieDiscover, seriesDiscover } from "../_lib/tmdb.js";
+import tmdbToCard from "../_lib/mapToCard.js";
 import type {
     DiscoverTvParams,
-} from "types/TmdbDiscover";
+} from "../../types/TmdbDiscover.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method !== "GET") {

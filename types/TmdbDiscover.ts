@@ -1,4 +1,4 @@
-import type { TmdbResult } from "./Tmdb";
+import type { TmdbResult } from "./Tmdb.js";
 
 export type MonetizationType = "flatrate" | "free" | "ads" | "rent" | "buy";
 

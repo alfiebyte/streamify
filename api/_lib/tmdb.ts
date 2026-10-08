@@ -8,14 +8,14 @@ import type {
     TmdbWatchProvidersResult,
     TmdbMovieDetails,
     TmdbSeriesDetails,
-} from "types/Tmdb";
+} from "../../types/Tmdb.js";
 
 import type {
     DiscoverMovieParams,
     DiscoverTvParams,
     MovieDiscover,
     SeriesDiscover,
-} from "types/TmdbDiscover";
+} from "../../types/TmdbDiscover.js";
 
 export const TMDB_BASE = "https://api.themoviedb.org/3";
 export const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p";
