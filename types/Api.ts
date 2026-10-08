@@ -1,4 +1,4 @@
-import type { CardInterface } from "./Card";
+import type { CardInterface } from "./Card.js";
 
 export interface PageResult {
     success: boolean;

@@ -1,9 +1,9 @@
-import type { TmdbImage, TmdbImagesResult, TmdbResult } from "types/Tmdb";
-import type { CardInterface, CardType } from "types/Card";
+import type { TmdbImage, TmdbImagesResult, TmdbResult } from "../../types/Tmdb.js";
+import type { CardInterface, CardType } from "../../types/Card.js";
 
-import { movieImages, seriesImages } from "./tmdb";
+import { movieImages, seriesImages } from "./tmdb.js";
 
-import { TMDB_IMAGE_BASE } from "./tmdb";
+import { TMDB_IMAGE_BASE } from "./tmdb.js";
 
 const GENRE_NAMES: Record<number, string> = {
     28: "Action",
