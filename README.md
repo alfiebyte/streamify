@@ -1,75 +1,77 @@
-# React + TypeScript + Vite
+# Streamify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Demo](https://img.shields.io/badge/Vercel-live%20demo-255dd7?style=for-the-badge&logo=vercel)](https://streamify-teal-tau.vercel.app/)
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?logo=axios&logoColor=white)
+![TMDB](https://img.shields.io/badge/TMDB_API-01B4E4?logo=themoviedatabase&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
+![Google OAuth](https://img.shields.io/badge/Google_OAuth_2.0-4285F4?logo=google&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
+<!-- Add a badge for your test framework, e.g. Vitest: ![Vitest](https://img.shields.io/badge/Vitest-6E9F18?logo=vitest&logoColor=white) -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+A web app for discovering movies and TV series and tracking what you've watched, including episode progress for series and total runtime for films.
 
-## React Compiler
+**[Try the live demo](https://streamify-teal-tau.vercel.app/)**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![Screenshot](docs/screenshot.png)
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Discover:** browse movies and series
+- **Track progress:** mark individual episodes as watched, and log movies runtime
+- **Secure sign-in:** Google OAuth 2.0 authentication, so your watch history is private, saved and synced across devices
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Area | Technology |
+| --- | --- |
+| Frontend | React, Vite |
+| API | TMDB API |
+| Backend | Vercel serverless functions |
+| Database | Supabase (PostgreSQL) |
+| Authentication | Google OAuth 2.0 |
+| DevOps | GitHub Actions CI/CD, Vercel |
+| Testing | Vitest |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Install
 
+```bash
+npm install
+```
+```bash
+npm install -g vercel
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+Create an TMDB API Token, and a Supabase project. Put these values into your .env
 ```
+TMDB_ACCESS_TOKEN=
+VITE_SUPABASE_URL=
+VITE_SUPABASE_PUBLISHABLE_KEY=
+```
+
+## Testing
+
+Run the test command to check the application is working properly:
+
+```bash
+npm run test
+```
+Tests also run automatically in CI before every deployment.
+
+
+## Deployment
+
+```bash
+npm install -g vercel
+vercel deploy
+```
+
+## Credits
+
+This product uses the TMDB API but is not endorsed or certified by TMDB.
+
+Built by [@alfiebyte](https://github.com/alfiebyte).
