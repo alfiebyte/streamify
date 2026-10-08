@@ -17,13 +17,14 @@ A web app for discovering movies and TV series and tracking what you've watched,
 
 **[Try the live demo](https://streamify-teal-tau.vercel.app/)**
 
-![Screenshot](docs/screenshot.png)
+![Preview](docs/preview.png)
 
 ## Features
 
-- **Discover:** browse movies and series
-- **Track progress:** mark individual episodes as watched, and log movies runtime
+- **Discover:** browse movies and series, and find where to watch them
+- **Track progress:** mark individual episodes as watched and log movie runtimes
 - **Secure sign-in:** Google OAuth 2.0 authentication, so your watch history is private, saved and synced across devices
+- **Automated CI/CD:** GitHub Actions runs the tests and deploys to Vercel automatically on every push or pull request
 
 ## Tech Stack
 
@@ -31,6 +32,7 @@ A web app for discovering movies and TV series and tracking what you've watched,
 | --- | --- |
 | Frontend | React, Vite |
 | API | TMDB API |
+| Deployment | Vercel |
 | Backend | Vercel serverless functions |
 | Database | Supabase (PostgreSQL) |
 | Authentication | Google OAuth 2.0 |
@@ -39,14 +41,15 @@ A web app for discovering movies and TV series and tracking what you've watched,
 
 ## Install
 
+Install the project dependencies and the Vercel CLI:
+
 ```bash
 npm install
-```
-```bash
 npm install -g vercel
 ```
 
-Create an TMDB API Token, and a Supabase project. Put these values into your .env
+Create a TMDB API access token and a Supabase project, then add these values to your `.env` file:
+
 ```
 TMDB_ACCESS_TOKEN=
 VITE_SUPABASE_URL=
@@ -55,13 +58,13 @@ VITE_SUPABASE_PUBLISHABLE_KEY=
 
 ## Testing
 
-Run the test command to check the application is working properly:
+Run the test command to check that the application is working properly:
 
 ```bash
 npm run test
 ```
-Tests also run automatically in CI before every deployment.
 
+Tests also run automatically in CI before every deployment.
 
 ## Deployment
 
