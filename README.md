@@ -11,7 +11,7 @@
 ![Google OAuth](https://img.shields.io/badge/Google_OAuth_2.0-4285F4?logo=google&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
-<!-- Add a badge for your test framework, e.g. Vitest: ![Vitest](https://img.shields.io/badge/Vitest-6E9F18?logo=vitest&logoColor=white) -->
+![Vitest](https://img.shields.io/badge/Vitest-6E9F18?logo=vitest&logoColor=white)
 
 A web app for discovering movies and TV series and tracking what you've watched, including episode progress for series and total runtime for films.
 
