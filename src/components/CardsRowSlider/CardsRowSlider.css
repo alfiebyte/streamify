@@ -2,62 +2,95 @@
     position: relative;
     padding-bottom: 25px;
     z-index: 1;
+
+    .headerTitle {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-left: 65px;
+    }
+
+    .slider {
+        position: relative;
+        margin: 5px 0px;
+        padding: 0px 4%;
+        touch-action: pan-y;
+
+        .arrow {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 4%;
+            border-radius: 5px;
+            background-color: rgba(27, 27, 27, 0.4);
+            z-index: 2;
+
+            opacity: 0;
+
+            transition: opacity 0.3s ease;
+
+            .arrowImg {
+                width: 100%;
+                height: 100%;
+                filter: brightness(0) saturate(100%) invert(99%) sepia(0%) saturate(0%) hue-rotate(48deg) brightness(101%) contrast(100%);
+                opacity: 0.8;
+            }
+        }
+
+        .arrow:hover {
+            opacity: 1;
+        }
+
+        .cards {
+            white-space: nowrap;
+
+            transition: transform .84s cubic-bezier(.5, 0, .1, 1) 0s;
+
+            /* .card:hover {
+                    .children {
+                        .dropdrown-details {
+                            opacity: 1;
+                        }
+
+                        .card-container {
+                            .thumbnail {
+                                opacity: 0;
+                            }
+
+                            .popup {
+                                .icon {
+                                    left: 15px;
+                                    opacity: 1;
+
+                                    transition: all 500ms ease-in-out;
+                                    transition-delay: 1.5s;
+                                }
+                                opacity: 1;
+                            }
+                        }
+
+                        transform: scale(1.2);
+                    }
+
+                    z-index: 3;
+                }*/
+        }
+    }
+
+    @media screen and (min-width: 1500px) {
+        .slider {
+            padding: 0px 60px;
+        }
+
+        .slider .arrow {
+            width: 60px;
+        }
+    }
+}
+
+.row:last-child {
+    margin-bottom: 200px;
 }
 
 .row:hover {
-    z-index: 2;
-}
-
-.row .headerTitle {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-left: 65px;
-}
-
-.row .slider {
-    position: relative;
-    margin: 5px 0;
-    padding: 0 4%;
-    touch-action: pan-y;
-}
-
-.row .arrow {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 4%;
-    border-radius: 5px;
-    background-color: rgba(27, 27, 27, 0.4);
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.row .arrow:hover {
-    opacity: 1;
-}
-
-.row .arrowImg {
-    width: 100%;
-    height: 100%;
-    filter: brightness(0) saturate(100%) invert(99%) sepia(0%) saturate(0%)
-        hue-rotate(48deg) brightness(101%) contrast(100%);
-    opacity: 0.8;
-}
-
-.row .cards {
-    display: flex;
-    flex-direction: row;
-    white-space: nowrap;
-    transition: transform 0.84s cubic-bezier(0.5, 0, 0.1, 1) 0s;
-}
-
-@media screen and (min-width: 1500px) {
-    .row .slider {
-        padding: 0 60px;
-    }
-
-    .row .arrow {
-        width: 60px;
-    }
+    z-index: 2
 }

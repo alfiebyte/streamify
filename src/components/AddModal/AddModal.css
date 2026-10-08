@@ -1,0 +1,60 @@
+.add-modal .tracker {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.add-modal .progress-label {
+    font-weight: 600;
+}
+
+.add-modal input[type="range"] {
+    width: 100%;
+}
+
+.add-modal .actions {
+    display: flex;
+    gap: 10px;
+}
+
+.add-modal .actions button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid rgb(70, 70, 70);
+    background: none;
+    color: white;
+    cursor: pointer;
+}
+
+.add-modal .actions button.primary {
+    background: white;
+    border-color: white;
+    color: rgb(16, 17, 21);
+    font-weight: 600;
+}
+
+.add-modal .actions button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.add-modal .season-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.add-modal .episodes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+}
+
+.add-modal .episode {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: rgb(200, 200, 200);
+}

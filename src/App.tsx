@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 
-import "@src/global.css";
+import "src/global.css";
 
-import Layout from "@src/layout/Layout";
+import Layout from "src/layout/Layout";
 
 import Home from "./pages/Home/Home";
 import Movies from "./pages/Movies/Movies";

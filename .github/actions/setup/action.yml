@@ -6,9 +6,9 @@ runs:
   steps:
     - uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: 22
         cache: npm
-    - run: npm ci
+    - run: npm install
       shell: bash
     - run: npm install -g vercel@latest
       shell: bash

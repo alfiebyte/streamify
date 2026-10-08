@@ -3,9 +3,12 @@ import { Link, useLocation } from "react-router";
 
 import {
     nav
-} from "@src/assets";
+} from "src/assets";
+import CircleButton from "src/components/CircleButton/CircleButton";
 
-import "@src/layout/Header/Header.css";
+import { useAuth } from "src/context/AuthContext";
+
+import "src/layout/Header/Header.css";
 
 interface NavItemProps {
     text: string;
@@ -40,6 +43,42 @@ function useScrolled() {
     return scrolled;
 }
 
+function Profile() {
+    const { session, loading, signInWithGoogle, signOut } = useAuth();
+
+    const user = session?.user
+
+    if (loading) return <div className="profile" />;
+
+    if (!user) {
+        return (
+            <div className="profile">
+                <CircleButton
+                    Action="Sign In with Google"
+                    OnClick={signInWithGoogle}
+                    Style={{ height: 42, width: 200, borderRadius: 10, background: "rgb(63, 127, 236)" }}
+                />
+            </div>
+        );
+    }
+
+    const name = user.user_metadata.full_name ?? user.email ?? "";
+    const avatar = user.user_metadata.avatar_url ?? nav.defaultPfp;
+
+    return (
+        <div className="profile" title="Sign out" onClick={signOut}>
+            <span className="name">{name.slice(0, 20)}</span>
+            <img
+                className="pfp"
+                src={avatar}
+                onError={(element) => {
+                    element.currentTarget.src = nav.defaultPfp
+                }}
+            />
+        </div>
+    );
+}
+
 interface LayoutProps {}
 
 function LayoutHeader({}: LayoutProps) {
@@ -52,7 +91,7 @@ function LayoutHeader({}: LayoutProps) {
                 <Link to="/" className="logo">
                     Streamify
                 </Link>
-                <div className="navigation">
+                {/*<div className="navigation">
                     <NavItem text="Home" logo={nav.home} href="/" />
                     <NavItem text="Movies" logo={nav.movie} href="/movies" />
                     <NavItem
@@ -60,13 +99,10 @@ function LayoutHeader({}: LayoutProps) {
                         logo={nav.tvSeries}
                         href="/series"
                     />
-                </div>
+                </div>*/}
             </div>
             <div className="right">
-                <div className="profile">
-                    <span className="name">OnlyTwentyCharacters</span>
-                    <img className="pfp" src={nav.defaultPfp} />
-                </div>
+                <Profile />
             </div>
         </div>
     );

@@ -10,6 +10,17 @@
     outline: solid 1px white;
 }
 
+.button .text {
+    aspect-ratio: auto;
+    padding: 0 18px;
+    border-radius: 999px;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
 .button .icon {
     height: 50%;
     width: 50%;

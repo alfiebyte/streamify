@@ -1,14 +1,22 @@
-import "@src/components/CircleButton/CircleButton.css";
+import "src/components/CircleButton/CircleButton.css";
 import type React from "react";
 
 interface CircleButtonProps {
     Action: string;
-    Icon: string;
+    Icon?: string;
     OnClick?: React.MouseEventHandler<HTMLButtonElement>;
     Style?: React.CSSProperties;
 }
 
 function CircleButton({ Action, Icon, OnClick, Style }: CircleButtonProps) {
+    if (!Icon) {
+        return (
+            <button className="button text" onClick={OnClick} style={Style}>
+                {Action}
+            </button>
+        );
+    }
+
     return (
         <button className="button" onClick={OnClick} style={Style}>
             <img loading="lazy" src={Icon} alt={Action} className="icon" />
