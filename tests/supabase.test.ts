@@ -1,11 +1,16 @@
-import { describe, it, expect } from "vitest";
-import { supabase } from "../src/lib/supabase";
+import { beforeAll, describe, it, expect } from "vitest";
 
 const hasConfig =
   !!import.meta.env.VITE_SUPABASE_URL &&
   !!import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 describe.skipIf(!hasConfig)("Supabase live", () => {
+  let supabase: typeof import("../src/lib/supabase").supabase;
+
+  beforeAll(async () => {
+    ({ supabase } = await import("../src/lib/supabase"));
+  });
+
   it("has no session when signed out", async () => {
     const { data, error } = await supabase.auth.getSession();
 
